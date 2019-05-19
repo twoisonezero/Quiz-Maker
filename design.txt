@@ -1,0 +1,37 @@
+Prompt:
+Quiz Maker
+Make an application which takes various questions from a file, picked randomly, and puts together a quiz for students.
+Each quiz can be different and then reads a key to grade the quizzes.
+
+Many questions need to be answered, and many assumptions need to be made, after reading the prompt above.
+I will start stating the assumptions that I will base my design on.
+
+
+Objective:
+Eventually the application should be able to handle mutiple styles of file input that will contain the set of questions and answers, which will make up the quiz. By styles I mean formats like JSON, XML, delimited-text, etc. To start I think I'm going to use delimited-text because I won't need to consume any external libraries for reading JSON/XML.
+
+User input will be:
+- File containing the questions
+- The number of questions that the quiz should be made up of
+- (Optional) How many of the multiple choice answers should be made available (so if the file contains 6 answer options, only 1 being correct, should we limit that number to say 3 options)
+
+Ex question file:
+How many periods are in the following sentence? "Programming is fun. Programming can be hard, but designing is harder." | 3 | Two | One | Three
+People will likely use this application! (Choose the most correct) | 3 | Probably not | True | False
+
+The above example file will generate up to two questions. The format of our delimited line is:
+<Question> | <Number of answers> | <Correct answer> [ | <Incorrect answer> ]*
+I'm not sure I need the <Number of answers> input but to make things easy I added it.
+
+Output will be:
+- Answer key for the quiz
+- The quiz
+
+Limitations:
+- Given that I need to generate an answer key, there will be no short/long answer questions and thus only be multiple choice questions to be used in the quiz.
+- Additionally there will only ever be 1 correct answer, so we won't have a "Select all that apply" option.
+
+Future:
+On top of the quiz maker, I imagine this tool should be able to produce an outcome sheet given an answer key and one, or more, completed quizes (set of answers).
+The two limitations explained above could probably be fixed as a future project, but I'm going to keep the scope of the project small for now.
+
